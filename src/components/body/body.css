@@ -1,0 +1,41 @@
+.body{
+    width: 100vw;
+    display: block;
+}
+
+.header{
+    background-color: rgb(36, 36, 36);
+    color: white;
+    padding: 20px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.padding-20{
+    padding: 20px;
+    width: 70vw;
+}
+
+.logo{
+    width: 55px;
+    margin-right: 10px;
+}
+
+.logo:hover{
+    opacity: 0.5;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.logo:hover .name-app{
+    color: lightgray;
+    transition: 1s;
+    cursor: pointer;
+}
+
+.mt-20{
+    margin-top: 20px;
+}

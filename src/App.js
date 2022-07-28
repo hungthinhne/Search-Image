@@ -1,24 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
+import Body from './components/body/Body';
+import Search from './components/search/Search';
+import Image from './components/image/Image';
+import useAxios from './hooks/useAxios';
+import { createContext, useState } from 'react';
+
+
+export const ImageContext = createContext()
 
 function App() {
+
+  const [SearchImg, setSearchImg] = useState("");
+  const { response, isLoanding, error, fetchData } = useAxios(`https://api.unsplash.com/search/photos?page=1&query=street-photography&client_id=${process.env.REACT_APP_ACCESS_KEY}`);
+  console.log(response) 
+
+  const value = {
+    response,
+    isLoanding,
+    SearchImg,
+    setSearchImg,
+    fetchData
+  }
+
   return (
+    <ImageContext.Provider value={value}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Body>
+      <Search/>
+     </Body> 
+     <Image />
+    </div>       
+    </ImageContext.Provider>
   );
 }
 
