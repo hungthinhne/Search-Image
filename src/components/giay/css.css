@@ -1,0 +1,72 @@
+.form-list-giay{
+    padding: 2rem 5rem;
+    text-align: center;
+    gap: 10px;
+}
+
+.item-list-giay{
+    text-align: start;
+    transform: scale(0.97);
+    padding-top: 10px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.item-list-giay:hover{
+   transition: all 0.4s;
+   position: relative;
+   background-color: rgba(241, 241, 241, 0.438);
+   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+.item-list-giay:hover .extra-img-giay{
+    display: inline;
+}
+
+.main-img-giay{
+    max-width: inherit;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 15px;
+}
+
+.icon-like{
+    position: absolute;
+    transform: translate(-35px, 10px);
+    font-weight: bold;
+    color: #2c5a40;
+    float: right;
+}
+
+.form-extra-img{
+    display: flex;
+    width: 100%;
+}
+
+.extra-img-giay{
+    transform: scale(0.93);
+    display: none;
+}
+
+.extra-img-giay:hover{
+    border: 2px solid rgb(118, 118, 118);
+}
+
+.border-img-extra{
+    border: 2px solid rgb(118, 118, 118);
+}
+
+.btn-xem-them{
+    font-weight: 300;
+    padding: 5px;
+    border: solid 2px rgb(81, 81, 81);
+    color: rgb(81, 81, 81);
+    width: min-content;
+    display: inline;
+    cursor: pointer;
+}
+
+.btn-xem-them:hover{
+    background-color: #2c5a40;
+    border: solid 2px #2c5a40;
+    color: #eda766;
+}

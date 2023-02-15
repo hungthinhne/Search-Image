@@ -1,0 +1,73 @@
+.item-list-san-bong{
+   position: relative;
+   margin-bottom: 1.3rem;
+   overflow: hidden;
+   color: white;
+}
+
+.bg-img-san-bong{
+    background: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.3)
+      ), 
+      url(../../../public/image/dmitry-limonov-VXL-2HBkO7s-unsplash.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.img-san-bong{
+    filter:brightness(80%);
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    transition: 0.4s;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.img-san-bong:hover{
+    filter:brightness(120%);
+    transition: 1s;
+}
+
+.item-list-san-bong:hover .form-arrow-right{
+    background-color: #2d4236;
+    color: #eda766;
+}
+
+.form-ranting-start{
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    right: 30px;
+    top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-dia-chi-san-bong{
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    left: 30px;
+    bottom: 2.5rem;
+}
+
+.form-ten-san-bong{
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    left: 30px;
+    bottom: 4rem;
+}
+
+.form-arrow-right{
+    position: absolute;
+    display: flex;
+    z-index: 10;
+    right: 12px;
+    bottom: 1rem;
+    padding: 7px 15px;
+    cursor: pointer;
+}

@@ -1,0 +1,81 @@
+.form-header{
+    position: fixed;
+    padding: 10px;
+    z-index: 999;
+}
+
+.form-tilte-header{
+    cursor: pointer;
+    align-items: center;
+}
+
+.icon-title{
+    transition: all 0.3s;
+}
+
+.form-tilte-header:hover .icon-title{
+    transform: rotate(45deg);
+    transition: all 0.3s;
+}
+
+.title-header{
+    color: #eda766;
+}
+
+.form-function-header{
+    width: 100%;
+    gap: 25px;
+    justify-content: end;
+    max-width: 60rem;
+    display: flex;
+}
+
+.item-function-header{
+    cursor: pointer;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-bottom: transparent solid 3px;
+    font-weight: bold;
+}
+
+.item-function-header:hover{
+    color: #56a076;
+    border-bottom: #56a076 solid 3px;
+}
+
+.form-user-header2{
+    margin: 0 4rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-user-header{
+    display: flex;
+    background-color: #2d4236;
+    border-radius: 20px;
+    padding: 2px 3px 2px 2px;
+    color: #eda766;
+    border: solid #eda766 2px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: 0.4s;
+}
+
+.form-cart-header{
+    border: solid #eda766 3px;
+    background-color: rgba(0, 0, 0, 0.26);
+}
+
+.form-user-header:hover{
+    background-color: #18251e;
+    transition: 0.4s;
+}
+
+.text-dang-xuat:hover{
+    color: rgb(130, 0, 0);
+}
+
+.icon-cart-user{
+    transform: translateX(1px) translateY(-1px);
+}

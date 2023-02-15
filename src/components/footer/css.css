@@ -1,0 +1,25 @@
+.link-footer{
+    text-decoration:none
+}
+
+.form-footer{
+    position: fixed;
+    bottom: 0;
+    background-color: #2d4236;
+    color: #eda766;
+    display: flex;
+    justify-content: center;
+    z-index: 999;
+}
+
+.form-email-footer{
+    width: 25rem;
+}
+
+.input-email-footer{
+    width: 100%;
+}
+
+.btn-email-footer{
+    width: max-content;
+}

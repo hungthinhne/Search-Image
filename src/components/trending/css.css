@@ -1,0 +1,31 @@
+.form-trending{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 5rem;
+}
+
+.form-trending-right{
+    margin-left: 5rem;
+    position: relative;
+}
+
+.img-trending{
+    max-width: 20rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.5s;
+}
+
+.img-trending:hover{
+    transform: scale(1.03);
+    transition: 0.5s;
+}
+
+.img-trending-1{
+    position: absolute;
+}
+
+.img-trending-2{
+    position: absolute;
+    margin: 7rem;
+}

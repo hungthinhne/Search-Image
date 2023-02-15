@@ -1,0 +1,90 @@
+.form-banner{
+    background: 
+    linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.0)
+      ), 
+      url(../../../public/image/dmitry-limonov-VXL-2HBkO7s-unsplash.jpg);
+    background-attachment: fixed;
+    height: 100vh;
+    background-size: cover;
+    padding: 5rem;
+    padding-top: 8rem;
+    display: flex;
+    align-items: center;
+}
+
+.body-banner{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 3rem;
+    gap: 15rem;
+}
+
+.banner-left{
+    height: 100%
+}
+
+.text-bigger-banner{
+    margin-top: 1rem;
+    font-size: 70px;
+}
+
+.btn-banner{
+    background-color: #2d4236;
+    color: #eda766;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
+}
+
+.btn-banner:hover{
+    transition: 0.3s;
+    background-color: #56a076;
+}
+
+.form-social-network{
+    margin-top: 10rem;
+    color: white;
+    font-size: larger;
+    display: block;
+    gap: 10px;
+}
+
+.item-social-network:hover{
+    color: #56a076;
+    cursor: pointer;
+}
+
+.banner-right{
+    display: flex;
+    position: relative;
+    margin-left: 3rem;
+}
+
+.form-img-banner{
+    overflow: hidden;
+    max-width: 15rem;
+}
+
+.img-banner-1{
+    position: absolute;
+}
+
+.img-banner-2{
+    position: absolute;
+    margin: 9rem;
+}
+
+.img-banner{
+    max-width: 14rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.5s;
+}
+
+.img-banner:hover{
+    transform: scale(1.03);
+    transition: 0.5s;
+}
