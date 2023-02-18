@@ -3,8 +3,8 @@
 }
 
 .form-footer{
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    /* bottom: 0; */
     background-color: #2d4236;
     color: #eda766;
     display: flex;

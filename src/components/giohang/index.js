@@ -1,12 +1,22 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import "./css.css";
-import { AiOutlineSearch, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiFillCodeSandboxCircle,
+  AiFillDelete,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import { VscListFilter } from "react-icons/vsc";
-import { BiDotsHorizontalRounded, BiDotsVertical } from "react-icons/bi";
+import {
+  BiDotsHorizontalRounded,
+  BiDotsVertical,
+  BiEdit,
+} from "react-icons/bi";
 import { Modal } from "reactstrap";
 import { toast, ToastContainer } from "react-toastify";
 import Order from "../order";
+import SingleProduct from "../single-pro";
 
 export function useOnClickOutside(ref, handler) {
   useEffect(() => {
@@ -110,8 +120,8 @@ const GioHang = () => {
       setQuanlityPro(listCart.filter((item) => item.checked === true).length);
     } else {
       toast.error(
-        <div>
-          <strong>Bạn chưa chọn sản phẩm!</strong>
+        <div className="d-flex align-content-center h-100 p-2">
+          <h5 className="mt-1">Bạn chưa chọn sản phẩm!</h5>
         </div>,
         {
           position: "top-center",
@@ -180,7 +190,7 @@ const GioHang = () => {
           callListCart={callListCart}
         />
       )}
-      <div className="form-default bg-light pb-2">
+      <div className="form-default">
         <div className="header-form-cart">
           <AiOutlineShoppingCart size={25} className="me-4" />
           <div className="form-title-header-cart bg-light rounded p-2">
@@ -206,7 +216,6 @@ const GioHang = () => {
             </strong>
           </button>
         </div>
-
         <div className="body-form-cart">
           <div className="header-body-form-cart">
             <input
@@ -288,6 +297,7 @@ const ItemCartBody = (props) => {
   const ref = useRef();
   useOnClickOutside(ref, () => setOpenOption(false));
   const [openNotifi, setOpenNotifi] = useState(false);
+  const [openDetail, setOpenDetail] = useState(false);
 
   const handleClick = () => {
     setOpenNotifi(true);
@@ -302,7 +312,6 @@ const ItemCartBody = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setOpenNotifi(false);
         callListCart();
       })
@@ -339,7 +348,6 @@ const ItemCartBody = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         callListCart();
       })
       .catch((error) => {
@@ -370,12 +378,8 @@ const ItemCartBody = (props) => {
 
   return (
     <>
-      {
-        <Modal
-          isOpen={openNotifi}
-          toggle={toggleNotifi}
-          callListCart={callListCart}
-        >
+      {openNotifi && (
+        <Modal isOpen={openNotifi} toggle={toggleNotifi}>
           <div className="form-notifi">
             <h5 className="text-green">Thông Báo</h5>
             <div className="body-notifi">
@@ -397,9 +401,24 @@ const ItemCartBody = (props) => {
             </div>
           </div>
         </Modal>
-      }
-      <div className="item-table-body-cart">
-        <div className="items-table-cart d-flex justify-content-center">
+      )}
+      {openDetail && (
+        <SingleProduct
+          idDetail={item.idProduct}
+          open={openDetail}
+          setOpen={setOpenDetail}
+          isCart={true}
+          quanlityCart={item.quanlity}
+          sizeCart={item.size}
+          idCart={item.id}
+          callListCart={callListCart}
+        />
+      )}
+      <div onClick={() => setOpenDetail(true)} className="item-table-body-cart">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className="items-table-cart d-flex justify-content-center"
+        >
           <input
             className="ms-3"
             type="checkbox"
@@ -424,7 +443,7 @@ const ItemCartBody = (props) => {
         <div className="items-table-cart">
           <h5 className="btn-size btn-size-cart">{item?.size}</h5>
         </div>
-        <div className="items-table-cart">
+        <div onClick={(e) => e.stopPropagation()} className="items-table-cart">
           <div className="mt-2 d-flex px-0 mx-0 form-quality control-height-items-table">
             <div
               onClick={handleMinusQuanliti}
@@ -458,7 +477,7 @@ const ItemCartBody = (props) => {
             {new Intl.NumberFormat().format(item?.price * item?.quanlity)} VNĐ
           </h6>
         </div>
-        <div className="items-table-cart">
+        <div onClick={(e) => e.stopPropagation()} className="items-table-cart">
           <div
             ref={ref}
             onClick={() => setOpenOption(!openOption)}
@@ -470,15 +489,21 @@ const ItemCartBody = (props) => {
                 openOption ? `` : `close-drop`
               }`}
             >
-              <p onClick={handleBuySingle} className="item-drop">
+              <p onClick={handleBuySingle} className="item-drop text-special">
+                <AiFillCodeSandboxCircle size={20} className="me-1 rounded" />{" "}
                 Đặt hàng
               </p>
-              <p className="item-drop">Thông tin sản phẩm</p>
               <p
-                className="item-drop text-dang-xuat"
+                onClick={() => setOpenDetail(true)}
+                className="item-drop text-special"
+              >
+                <BiEdit size={20} className="me-1 rounded" /> Cập nhật giỏ
+              </p>
+              <p
+                className="item-drop text-dang-xuat text-special"
                 onClick={() => handleClick()}
               >
-                Xóa khỏi giỏ hàng
+                <AiFillDelete size={20} className="me-1 rounded" /> Xóa sản phẩm
               </p>
             </div>
           </div>

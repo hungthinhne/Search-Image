@@ -21,7 +21,7 @@ export const ImageContext = createContext();
 function BasicLayout() {
   return (
     <>
-      <div className="pb-5">
+      <div>
         <Header />
         <Outlet />
         <Footer />

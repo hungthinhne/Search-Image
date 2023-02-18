@@ -1,12 +1,18 @@
 .form-header{
     position: fixed;
-    padding: 10px;
+    padding: 15px;
     z-index: 999;
+}
+
+.bg-header-scrooll{
+    background-color: white;
+    color: #18251e;
 }
 
 .form-tilte-header{
     cursor: pointer;
     align-items: center;
+    min-width: max-content;
 }
 
 .icon-title{
@@ -25,9 +31,9 @@
 .form-function-header{
     width: 100%;
     gap: 25px;
-    justify-content: end;
-    max-width: 60rem;
+    justify-content: center;
     display: flex;
+    position: absolute;
 }
 
 .item-function-header{
@@ -46,7 +52,7 @@
 }
 
 .form-user-header2{
-    margin: 0 4rem;
+    margin-left: auto;
     display: flex;
     justify-content: center;
 }
@@ -60,6 +66,7 @@
     border: solid #eda766 2px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: 0.4s;
+    width: max-content;
 }
 
 .form-cart-header{
@@ -77,5 +84,9 @@
 }
 
 .icon-cart-user{
-    transform: translateX(1px) translateY(-1px);
+    border: solid 2.5px #eda766;
+    padding: 4px 4px 5px 4px;
+    border-radius: 50%;
+    color: #eda766;
+    background-color: rgba(0, 0, 0, 0.26);
 }

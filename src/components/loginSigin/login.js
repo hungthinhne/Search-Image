@@ -15,8 +15,8 @@ const Login = () => {
   const handleLogin = () => {
     if (!accounts.account.email || !accounts.account.password) {
       toast.error(
-        <div>
-          <strong>Bạn chưa nhập đủ thông tin!</strong>
+        <div className="d-flex align-content-center h-100 p-2">
+          <h5 className="mt-1">Bạn chưa nhập đủ thông tin</h5>
         </div>,
         {
           position: "top-center",
@@ -81,13 +81,13 @@ const Login = () => {
         theme="dark"
       />
       <div className="outline-bg-login">
-        <div className="bg-login">
-          <div className="body-login">
-            <div className="form-login-left">
-              <div className="body-form-login-left p-5 bg-white">
-                <div className="w-100 d-flex form-header p-0 align-items-center">
+        <div className="outline-login">
+          <div className="bg-login">
+            <div className="body-login">
+              <div className="form-login-left">
+                <div className="d-flex">
                   <Link className="link-none-style" to="/">
-                    <div className="d-flex align-items-center m-0 p-0 form-tilte-header">
+                    <div className="d-flex align-items-center m-0 p-0 form-tilte-header form-tilte-header-login">
                       <GiMeshBall
                         color="#eda766"
                         className="ms-0 me-2 icon-title text-green"
@@ -99,64 +99,90 @@ const Login = () => {
                     </div>
                   </Link>
                 </div>
-                <div className="mt-5 pt-2">
-                  <h3 className="mt-5 text-brown">Đăng Nhập</h3>
-                  <p className="text-special">
-                    Trang web đặt sân bóng tại thành phố Quy Nhơn.
-                  </p>
-                  <div className="form-input-login mt-4 w-100">
-                    <input
-                      className="input-login"
-                      type="text"
-                      placeholder="Số điện thoại (Tài khoản)"
-                      onChange={(e) =>
-                        setAccount((prevState) => ({
-                          account: {
-                            ...prevState.account,
-                            email: e.target.value,
-                          },
-                        }))
-                      }
-                    />
+                <div className="body-form-login-left">
+                  <div>
+                    <h3 className="text-green">Đăng Nhập</h3>
+                    <p className="text-special">
+                      Trang web đặt sân bóng tại thành phố Quy Nhơn.
+                    </p>
+                    <div className="form-input-login mt-4">
+                      <input
+                        className="input-login text-special"
+                        type="text"
+                        placeholder="Số điện thoại (Tài khoản)"
+                        onChange={(e) =>
+                          setAccount((prevState) => ({
+                            account: {
+                              ...prevState.account,
+                              email: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="form-input-login">
+                      <input
+                        className="input-login text-special"
+                        type="text"
+                        placeholder="Mật khẩu"
+                        onChange={(e) =>
+                          setAccount((prevState) => ({
+                            account: {
+                              ...prevState.account,
+                              password: e.target.value,
+                            },
+                          }))
+                        }
+                      />
+                    </div>
+                    <div className="form-luu-mat-khau d-flex mb-3">
+                      <input type="checkbox" className="me-2" />
+                      <p>Lưu mật khẩu</p>
+                    </div>
+                    <div className="form-btn-login mb-3">
+                      <button
+                        onClick={() => handleLogin()}
+                        className="btn-form-detail btn-main text-special"
+                      >
+                        Đăng nhập
+                      </button>
+                    </div>
+                    <div className="form-btn-login">
+                      <button
+                        onClick={() => navigate("/sigin")}
+                        className="btn-form-detail btn-add-cart text-special"
+                      >
+                        Đăng ký
+                      </button>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
                   </div>
-                  <div className="form-input-login w-100">
-                    <input
-                      className="input-login"
-                      type="text"
-                      placeholder="Mật khẩu"
-                      onChange={(e) =>
-                        setAccount((prevState) => ({
-                          account: {
-                            ...prevState.account,
-                            password: e.target.value,
-                          },
-                        }))
-                      }
-                    />
+                </div>
+              </div>
+              <div className="form-login-right text-white d-flex p-3">
+                <div className="mt-auto title-login-right">
+                  <h4>
+                    Sẽ luôn cố gắng cải thiện chất lượng sản phẩm, chăm sóc
+                    khách hàng để trở thành trang web Booking Sport hàng đầu.
+                  </h4>
+                  <div className="d-flex">
+                    <div className="d-block">
+                      {/* <h1>OnThePitch</h1> */}
+                      <p>Website Booking Sport</p>
+                    </div>
+                    <div className="ms-auto mt-auto me-0">
+                      <div className="d-flex align-items-center me-0 form-tilte-header">
+                        <GiMeshBall
+                          color="#eda766"
+                          className="ms-0 me-2 icon-title"
+                          size={55}
+                        />
+                        <h1 className="title-header fw-bold">OnThePitch</h1>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-luu-mat-khau d-flex mb-3">
-                    <input type="checkbox" className="me-2" />
-                    <p>Lưu mật khẩu</p>
-                  </div>
-                  <div className="form-btn-login mb-3">
-                    <button
-                      onClick={() => handleLogin()}
-                      className="btn-form-detail btn-main text-special"
-                    >
-                      Đăng nhập
-                    </button>
-                  </div>
-                  <div className="form-btn-login">
-                    <button
-                      onClick={() => navigate("/sigin")}
-                      className="btn-form-detail btn-add-cart text-special"
-                    >
-                      Đăng ký
-                    </button>
-                  </div>
-                  <br />
-                  <br />
-                  <br />
                 </div>
               </div>
             </div>

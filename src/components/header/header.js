@@ -3,8 +3,9 @@ import {
   AiFillHome,
   AiOutlineUnorderedList,
   AiTwotoneHeart,
+  AiTwotoneShopping,
 } from "react-icons/ai";
-import { BiShoppingBag, BiUserCircle } from "react-icons/bi";
+import { BiUserCircle } from "react-icons/bi";
 import { GiMeshBall } from "react-icons/gi";
 import { IoIosExit } from "react-icons/io";
 import { TiUserAdd } from "react-icons/ti";
@@ -85,15 +86,19 @@ const Header = () => {
         className={`w-100 d-flex form-header align-items-center text-white ${resultClass}`}
       >
         <div className="d-flex align-items-center form-tilte-header">
-          <GiMeshBall color="#eda766" className="me-2 icon-title" size={55} />
-          <Link className="link-none-style" to="/">
-            <h1 className="title-header fw-bold">OnThePitch</h1>
+          <Link className="link-none-style d-flex me-3" to="/">
+            <GiMeshBall color="#eda766" className="me-1 icon-title" size={35} />
+            <h3 className="title-header fw-bold mb-1">OnThePitch</h3>{" "}
           </Link>
+          <h3>|</h3>
+          <strong className="ms-3 d-flex text-special">
+            Website Booking Football
+          </strong>
         </div>
         <div className="form-function-header">
           <Link className="link-none-style" to="/">
             <div className="item-function-header">
-              <p className="d-flex gap-2 text-special align-items-center">
+              <p className="d-flex gap-2  align-items-center text-special">
                 <AiFillHome size={20} />
                 Trang Chủ
               </p>
@@ -103,16 +108,16 @@ const Header = () => {
             onClick={() => navigate("/san-bong")}
             className="item-function-header"
           >
-            <p className="text-special">Đặt sân</p>
+            <p className="text-special">Đặt Sân</p>
           </div>
           <div
             onClick={() => navigate("/giay")}
             className="item-function-header"
           >
-            <p className="text-special">Sản phẩm thể thao</p>
+            <p className="text-special">Sản Phẩm Thể Thao</p>
           </div>
           <div onClick={() => navigate("/")} className="item-function-header">
-            <p className="text-special">Giới thiệu</p>
+            <p className="text-special">Giới Thiệu</p>
           </div>
         </div>
         <div className="form-user-header2">
@@ -122,8 +127,8 @@ const Header = () => {
               className="drop me-3"
               ref={ref1}
             >
-              <div className="form-user-header form-cart-header align-items-center">
-                <BiShoppingBag className="icon-cart-user" size={23} />
+              <div className="d-flex align-items-center">
+                <AiTwotoneShopping className="icon-cart-user" size={34.5} />
               </div>
               <div
                 className={`${
@@ -155,7 +160,7 @@ const Header = () => {
             className="drop"
           >
             <div className="form-user-header form-cart-header align-items-center">
-              <BiUserCircle size={25} />
+              <BiUserCircle size={27} />
               <div className="form-user-name">
                 {info ? (
                   <strong className="mx-2 text-special">{info.username}</strong>

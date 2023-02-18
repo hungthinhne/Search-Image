@@ -2,55 +2,149 @@
     background: 
     linear-gradient(
         rgba(0, 0, 0, 0.0), 
-        rgba(0, 0, 0, 0.5)
+        rgba(0, 0, 0, 0.7)
       ),  
     url(../../../public/image/matthew-pyuhREiY3l4-unsplash.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
-    height: 97vh;
+    height: 100%;
     width: 100%;
-    border-radius: 42px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 0 10px 10px 0;
+    border: none;
+}
+
+.bg-sigin{
+    border-radius: 10px 0 0 10px !important;
+    overflow-x: hidden;
 }
 
 .outline-bg-login{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    padding: 5rem;
+    padding: 2rem;
     background-color: #e1e1e1;
+    height: 100vh;
+}
+
+.outline-login{
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    border-radius: 12px;
 }
 
 .body-login{
     display: grid;
-    grid-template-columns: 1.1fr 2fr;
+    grid-template-columns: 1fr 1.8fr;
     height: 100%;
+    width: 100%;
+}
+
+.body-sigin{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    height: 100%;
+    width: 100%;
+}
+
+.title-login-right{
+    animation: formLoginLeft 400ms ease-in-out forwards;
+    transform-origin: center left;
 }
 
 .form-login-left{
     height: 100%;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: white;
+    animation: formLoginLeft2 800ms ease-in-out forwards;
+    transform-origin: center left;
+}
+
+.form-sigin-right{
+    height: 100%;
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    background-color: white;
+    animation: formSigin 800ms ease-in-out forwards;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.form-sigin-right::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+.form-sigin-right::-webkit-scrollbar-track {
+    background-color: #cecece;
+    border-radius: 5px;
+}
+ 
+.form-sigin-right::-webkit-scrollbar-thumb {
+  background-color: rgb(78, 78, 78);
+  border-radius: 5px;
+}
+
+@keyframes formLoginLeft {
+    0% {
+        transform: translateX(50rem)
+    }
+    70% {
+        transform: translateX(10rem)
+    }
+    100% {
+        transform: translateX(0)
+    }
+  }
+
+  @keyframes formLoginLeft2 {
+    0% {
+        transform: translateX(50rem)
+    }
+    100% {
+        transform: translateX(0)
+    }
+  }
+
+  @keyframes formSigin {
+    0% {
+        transform: translateX(-50rem)
+    }
+    100% {
+        transform: translateX(0)
+    }
+  }
+
+.form-tilte-header-login{
+    background-color: white !important;
+    transform: scale(0.7) translateX(-2rem);
+    width: 100% !important;
 }
 
 .body-form-login-left{
-    height: 100%;
-    border-radius: 37px;
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     justify-content: center;
     align-items: center;
+    width: max-content;
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
 
 .form-input-login{
     margin-bottom: 2rem;
-    border-bottom: 2.5px solid rgb(136, 136, 136);
+    border-bottom: 1px solid rgb(187, 187, 187);
     padding: 10px 10px 10px 0;
     font-weight: bold !important;
+    min-width: 25rem;
 }
 
 .form-input-sigin{
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
     border-bottom: 2.5px solid rgb(136, 136, 136);
     padding: 10px 10px 10px 0;
     font-weight: bold !important;
@@ -63,7 +157,13 @@
 
 .form-body-sigin{
     max-height: 33rem;
-    padding-bottom: 5rem;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.form-right-body-order{
+    overflow-y: auto !important;
+    max-height: 39rem;
 }
 
 .btn-page-login{

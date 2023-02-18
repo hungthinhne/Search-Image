@@ -16,6 +16,7 @@ import { TiSortNumerically } from "react-icons/ti";
 import Tabs, { Tab } from "react-best-tabs";
 import { listHuyen, listPhuong, listTinh } from "../../function/listLocation";
 import Swal from "sweetalert2";
+import { v4 as uuid } from "uuid";
 
 const listShip = [
   {
@@ -37,6 +38,7 @@ const Order = (props) => {
     totalPice,
     quanlityPro,
     dataUser,
+    isSinglePro,
   } = props;
   const [info, setInfo] = useState();
   const [selectShip, setSelectShip] = useState(1);
@@ -51,6 +53,7 @@ const Order = (props) => {
   const [diaChiNha, setDiaChiNha] = useState({ soNha: "" }, { tenDuong: "" });
   const [diaChiKv, setDiaChiKV] = useState({ to: "" }, { khuVuc: "" });
   const [isDiaChi, setIsDiaChi] = useState(1);
+  const [openNotifi, setOpenNotifi] = useState(false);
   const [listCheck, setListCheck] = useState({
     sdt: true,
     tinh: true,
@@ -61,6 +64,11 @@ const Order = (props) => {
     to: true,
     khuVuc: true,
   });
+  const unique_id = uuid();
+
+  useEffect(() => {
+    console.log(unique_id);
+  }, [unique_id]);
 
   const ToastMuaHang = Swal.mixin({
     toast: true,
@@ -88,42 +96,58 @@ const Order = (props) => {
     setOpenTinh(false);
   });
 
-  useEffect(() => {
-    console.log(listCheck);
-  }, [diaChiNha, listCheck]);
-
   const handleToggleForm = useCallback(() => {
     setOpenOrder();
     callListCart();
   }, [callListCart, setOpenOrder]);
 
-  const handleOrder = useCallback(() => {
-    if (selectShip === 1) {
-      if (sdt.length < 10 || !sdt) {
-        setListCheck({ sdt: false });
-      } else {
-        fetch("http://localhost:8000/donHang", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            idUser: dataUser?.id,
-            sdt: sdt,
-            totalPice: totalPice,
-            isShip: false,
-            listProBuy: listProBuy,
-            timeOrder: new Date().toLocaleString() + "",
-          }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            ToastMuaHang.fire({
-              icon: "success",
-              title: "Bạn đã đặt thành công đơn hàng của mình!",
-            });
-            listProBuy.map((item) => {
+  const toggleNotifi = () => {
+    setOpenNotifi(!openNotifi);
+  };
+
+  const onOrder = () => {
+    fetch("http://localhost:8000/donHang", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(
+        selectShip === 2
+          ? {
+              idOrder: unique_id.slice(0, 6),
+              status: 0,
+              idUser: dataUser?.id,
+              sdt: sdt,
+              totalPice: totalPice,
+              isShip: false,
+              listProBuy: listProBuy,
+              diaChi:
+                isDiaChi === 1
+                  ? { tinh, huyen, phuong, diaChiNha }
+                  : { tinh, huyen, phuong, diaChiKv },
+              timeOrder: new Date().toLocaleString() + "",
+            }
+          : {
+              idOrder: unique_id.slice(0, 6),
+              status: 1,
+              idUser: dataUser?.id,
+              sdt: sdt,
+              totalPice: totalPice,
+              isShip: false,
+              listProBuy: listProBuy,
+              timeOrder: new Date().toLocaleString() + "",
+            }
+      ),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        ToastMuaHang.fire({
+          icon: "success",
+          title: "Đơn hàng của bạn đang được gửi đi! Hãy chờ nhận hàng nhé!",
+        });
+        isSinglePro
+          ? setOpenOrder(false)
+          : listProBuy.map((item) => {
               fetch(`http://localhost:8000/gioHang/${item.id}`, {
                 method: "DELETE",
                 headers: {
@@ -132,17 +156,25 @@ const Order = (props) => {
               })
                 .then((response) => response.json())
                 .then((data) => {
-                  console.log(data);
                   handleToggleForm();
                 })
                 .catch((error) => {
                   console.error("Error:", error);
                 });
             });
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const handleOrder = useCallback(() => {
+    setOpenNotifi(false);
+    if (selectShip === 1) {
+      if (sdt.length < 10 || !sdt) {
+        setListCheck({ sdt: false });
+      } else {
+        setOpenNotifi(true);
       }
     } else if (selectShip === 2) {
       if (sdt.length < 10 || !sdt) {
@@ -159,52 +191,7 @@ const Order = (props) => {
         } else if (!diaChiNha.tenDuong) {
           setListCheck({ tenDuong: false });
         } else {
-          fetch("http://localhost:8000/donHang", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              idUser: dataUser?.id,
-              isShip: true,
-              sdt: sdt,
-              totalPice: totalPice,
-              diaChi:
-                isDiaChi === 1
-                  ? { tinh, huyen, phuong, diaChiNha }
-                  : { tinh, huyen, phuong, diaChiKv },
-              listProBuy: listProBuy,
-              timeOrder: new Date().toLocaleString() + "",
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              ToastMuaHang.fire({
-                icon: "success",
-                title: "Bạn đã đặt thành công đơn hàng của mình!",
-              });
-              listProBuy.map((item) => {
-                fetch(`http://localhost:8000/gioHang/${item.id}`, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                  .then((response) => response.json())
-                  .then((data) => {
-                    console.log(data);
-                    setOpenOrder(false);
-                    callListCart();
-                  })
-                  .catch((error) => {
-                    console.error("Error:", error);
-                  });
-              });
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
+          setOpenNotifi(true);
         }
       } else if (isDiaChi === 2) {
         if (!diaChiKv.to) {
@@ -212,75 +199,41 @@ const Order = (props) => {
         } else if (!diaChiKv.khuVuc) {
           setListCheck({ khuVuc: false });
         } else {
-          fetch("http://localhost:8000/donHang", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              idUser: dataUser?.id,
-              isShip: true,
-              sdt: sdt,
-              totalPice: totalPice,
-              diaChi:
-                isDiaChi === 1
-                  ? { tinh, huyen, phuong, diaChiNha }
-                  : { tinh, huyen, phuong, diaChiKv },
-              listProBuy: listProBuy,
-              timeOrder: new Date().toLocaleString() + "",
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-              ToastMuaHang.fire({
-                icon: "success",
-                title: "Bạn đã đặt thành công đơn hàng của mình!",
-              });
-              listProBuy.map((item) => {
-                fetch(`http://localhost:8000/gioHang/${item.id}`, {
-                  method: "DELETE",
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                })
-                  .then((response) => response.json())
-                  .then((data) => {
-                    console.log(data);
-                    setOpenOrder(false);
-                    callListCart();
-                  })
-                  .catch((error) => {
-                    console.error("Error:", error);
-                  });
-              });
-            })
-            .catch((error) => {
-              console.error("Error:", error);
-            });
+          setOpenNotifi(true);
         }
       }
     }
-  }, [
-    ToastMuaHang,
-    callListCart,
-    dataUser?.id,
-    diaChiKv,
-    diaChiNha,
-    handleToggleForm,
-    huyen,
-    isDiaChi,
-    listProBuy,
-    phuong,
-    sdt,
-    selectShip,
-    setOpenOrder,
-    tinh,
-    totalPice,
-  ]);
+  }, [diaChiKv, diaChiNha, huyen, isDiaChi, phuong, sdt, selectShip, tinh]);
 
   return (
     <>
+      {
+        <Modal isOpen={openNotifi} toggle={toggleNotifi}>
+          <div className="form-notifi py-4">
+            <h5 className="text-green">Xác Nhận Đặt Hàng</h5>
+            <div className="body-notifi">
+              <p className="text-special">
+                Đơn hàng của bạn sẽ được shop chuẩn bị. Hãy xác nhận rằng bạn
+                muốn mua sản phẩm nhé!
+              </p>
+            </div>
+            <div className="form-btn-notifi">
+              <button
+                onClick={toggleNotifi}
+                className="btn-notifi text-special btn-notifi-cancel"
+              >
+                Hủy
+              </button>
+              <button
+                onClick={onOrder}
+                className="btn-notifi text-special btn-notifi-ok"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </Modal>
+      }
       <Modal fullscreen isOpen={openOrder} toggle={() => handleToggleForm()}>
         <div className="p-4 bg-white border-bottom d-flex">
           <div className="form-title-header-detail d-flex">
@@ -326,6 +279,7 @@ const Order = (props) => {
         <div className="body-form-order">
           <div className="form-left-body-order">
             <h5>Danh Sách Sản Phẩm</h5>
+            {/* <p>{unique_id}</p> */}
             <p className="text-secondary">
               Hãy kiểm tra lại danh sách các sản phẩm trong đơn hàng để tránh
               sai sót.
