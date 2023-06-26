@@ -13,6 +13,7 @@
     cursor: pointer;
     align-items: center;
     min-width: max-content;
+    z-index: 10;
 }
 
 .icon-title{
@@ -46,6 +47,11 @@
     font-weight: bold;
 }
 
+.item-header-active{
+        color: #56a076;
+    border-bottom: #56a076 solid 3px;
+}
+
 .item-function-header:hover{
     color: #56a076;
     border-bottom: #56a076 solid 3px;
@@ -53,6 +59,7 @@
 
 .form-user-header2{
     margin-left: auto;
+    margin-right: 2rem;
     display: flex;
     justify-content: center;
 }
@@ -61,7 +68,7 @@
     display: flex;
     background-color: #2d4236;
     border-radius: 20px;
-    padding: 2px 3px 2px 2px;
+    padding: 1px 2px 1px 1px;
     color: #eda766;
     border: solid #eda766 2px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -74,9 +81,27 @@
     background-color: rgba(0, 0, 0, 0.26);
 }
 
+.form-cart-header-home-page{
+    color: #2d4236;
+    display: flex;
+    border: solid #2d4236 3px;
+    background-color: transparent;
+}
+.form-cart-header-home-page:hover{
+    border: solid #eda766 3px;
+    color: #eda766;
+}
+
 .form-user-header:hover{
     background-color: #18251e;
     transition: 0.4s;
+    background-color: #2d4236;
+}
+
+.icon-cart-user-home-page{
+    background-color: transparent !important;
+    color: #2d4236 !important;
+    border: solid transparent 3px !important;
 }
 
 .text-dang-xuat:hover{
@@ -89,4 +114,8 @@
     border-radius: 50%;
     color: #eda766;
     background-color: rgba(0, 0, 0, 0.26);
+}
+
+.item-header-home-page{
+    color: #436953 !important;
 }

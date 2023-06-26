@@ -10,6 +10,9 @@
 .form-delivery-left{
     background-color: #fbfbfb;
     padding-right: 10px;
+    z-index: 10;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 0 0 20px 0;
 }
 
 .search-delivery-left{
@@ -37,14 +40,17 @@
 }
 
 .item-delivery-left{
-    padding: 5px 2rem; 
-    margin-top: 10px;
+    padding: 10px 2rem; 
     cursor: pointer;
-    margin-bottom: 10px;
+    transition: 0.4ms;
 }
 
 .item-delivery-left:hover{
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(244, 244, 244);
+}
+
+.item-delivery-left-active{
+    background-color: rgb(230, 230, 230);
 }
 
 .form-header-body-delivery-left{
@@ -67,6 +73,14 @@
     align-items: center;
 }
 
+.form-delivery-right{
+    padding: 1rem;
+    transform: scale(
+        0.93
+    ) translateY(-2rem)
+
+}
+
 .body-item-delivery-left{
     border-bottom: 2px solid rgb(206, 206, 206);
 }
@@ -83,7 +97,7 @@
 }
 
 .icon-location-deliver{
-    background-color: #e9effb;
+    background-color: #d5e3ff;
     color: #4b86e4;
 }
 
@@ -107,7 +121,8 @@
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
-    border: 1.5px solid lightgray;
+    /* border: 1.5px solid rgb(230, 230, 230); */
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
 .icon-item-right-delivery{
@@ -115,6 +130,8 @@
     background-color: lightgray;
     border-radius: 10px;
     margin-right: 5px;
+    border: 1.5px solid rgb(230, 230, 230);
+    /* box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px; */
 }
 
 .icon-user-delivery{
@@ -133,19 +150,40 @@
 }
 
 .body-form-delivery{
-    border: 1.5px solid lightgray;
+    /* border: 1.5px solid rgb(230, 230, 230); */
     width: auto;
     left: 2rem;
     background-color: white;
     border-radius: 10px;
     align-items: center;
+    padding: 0 5px 0.5rem;
 }
 
 .body-form-delivery-tab{
     width: auto;
     left: 2rem;
     background-color: white;
-    margin: 1rem 10px;
+    margin: 10px 10px;
     border-radius: 10px;
     align-items: center;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
+
+.body-list-table-delivery{
+    max-height: 13rem;
+    overflow-y: auto;
+}
+
+.form-deliver-right-scroll{
+    animation: formDelivery 800ms ease-in-out forwards;
+}
+
+@keyframes formDelivery {
+    0% {
+        transform: translateX(-50rem)
+    }
+    100% {
+        transform: translateX(0)
+    }
+  }

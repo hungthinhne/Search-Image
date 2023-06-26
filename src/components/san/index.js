@@ -1,6 +1,7 @@
 import "./css.css";
 import { AiOutlineArrowRight, AiOutlineStar } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ListSanBong = (props) => {
   const { trangChu } = props;
@@ -18,14 +19,10 @@ const ListSanBong = (props) => {
 
   return (
     <>
-      <div
-        className={`form-list-san-bong p-5 ${
-          trangChu && `bg-img-san-bong`
-        } text-center`}
-      >
+      <div className={`form-list-san-bong p-5 text-center`}>
         <div className={`${!trangChu && `mt-5 pt-5`}`}>
           <h2 className="text-brown">Danh Sách Sân Bóng Đá</h2>
-          <strong className={`${trangChu && `text-white`}`}>
+          <strong>
             Tổng hợp danh sách toàn bộ sân bóng uy tín nhất ở Quy Nhơn.
           </strong>
           <div className="body-list-san-bong row p-5">
@@ -43,9 +40,14 @@ export default ListSanBong;
 
 const ItemSanBong = (props) => {
   const { itemSanBong } = props;
+  const navigate = useNavigate();
+
   return (
     <>
-      <div className="item-list-san-bong col-4">
+      <div
+        onClick={() => navigate(`/list-child-san-bong/${itemSanBong.id}`)}
+        className="item-list-san-bong col-4"
+      >
         <div className="form-ranting-start">
           <AiOutlineStar size={23} className="me-1" />
           <strong>{itemSanBong?.starRating}</strong>

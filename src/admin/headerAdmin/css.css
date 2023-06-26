@@ -1,0 +1,115 @@
+.form-header-admin{
+    height: 100vh;
+    position: fixed;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 1rem;
+    width: max-content;
+}
+
+.form-icon-header-admin{
+    height: min-content;
+    color: #2c5a40 !important;
+    display: flex;
+    margin: 0 5rem 0 0;
+    width: min-content;
+}
+
+.form-info-admin-header{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.item-body-header-admin{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.body-header-admin{
+    margin-top: 2rem;
+}
+
+.icon-item-body-header-admin{
+    /* transform: translateY(2px); */
+    margin-right: 10px;
+}
+
+.child-item-body-header-admin{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+    color: rgb(87, 87, 87);
+}
+
+.title-item-body-header-admin{
+    margin: 0;
+}
+
+.child-item-body-header-admin:hover{
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+    color: black;
+}
+
+.footer-header-admim{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 1rem;
+    width: 85%;
+    padding: 10px;
+    background-color: rgb(230, 230, 230);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.footer-header-admim:hover{
+    background-color: rgb(209, 209, 209);
+}
+
+.avt-info-admin-header{
+    border-radius: 50%;
+    max-height: 2.7rem;
+    margin-right: 1rem;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.form-top-header{
+    position: fixed;
+    right: 0;
+    padding: 1rem;
+    display: flex;
+}
+
+.form-input-search-header-admin{
+    background-color: #f9f9f9;
+    padding: 10px 10px 10px 20px;
+    border-radius: 7px;
+    max-height: 3rem;
+    align-items: center;
+}
+
+.input-search{
+    border: none;
+    background-color: transparent;
+    min-width: 17rem;
+}
+
+.form-icon-search-header-admin{
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 7px;
+    max-height: 3rem;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.form-icon-search-header-admin:hover{
+    background-color: rgb(235, 235, 235);
+}

@@ -2,6 +2,11 @@
     min-height: max-content;
 }
 
+.form-main-detail{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .form-title-header-detail{
     align-items: center;
     font-size: 30px;
@@ -51,7 +56,7 @@
 
 .form-right-detail{
     overflow-y: auto;
-    max-height: 22rem;
+    max-height: 23rem;
     -ms-overflow-style: none;
     scrollbar-width: none;
     position: relative;

@@ -88,7 +88,7 @@ const ImgeListGiay = (props) => {
         alt=""
         onClick={() => setOpenDetail(true)}
       />
-      <AiOutlineHeart className="icon-like" size={25} />
+      {/* <AiOutlineHeart className="icon-like" size={25} /> */}
       <div className="row mx-0 mt-1 px-0">
         {listImage.map((item) => {
           if (urlMain === item.url) {

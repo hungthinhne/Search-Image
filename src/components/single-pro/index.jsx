@@ -237,6 +237,7 @@ const SingleProduct = (props) => {
       <Modal
         className="form-detail-product-main rounded-0"
         size="xl"
+        // fullscreen
         isOpen={open}
         toggle={() => setOpen()}
       >
@@ -265,22 +266,22 @@ const SingleProduct = (props) => {
             </div>
           </div>
         </div>
-        <div className="row m-0 form-main-detail">
-          <div className="col-6 form-left-detail p-0 m-0">
+        <div className="m-0 form-main-detail">
+          <div className="form-left-detail p-0 m-0">
             {product?.listImage && (
               <CarouselImg listImage={product?.listImage} />
             )}
           </div>
-          <div className="col-6 p-4 bg-white">
+          <div className="p-4 bg-white">
             <div className="mb-2">
               <div className="row m-0 d-flex p-0">
                 <h3 className="col-10 p-0 form-title-detail">
                   {product?.name}
                 </h3>
-                <div className="col ps-auto from-header-detail-like fw-bold">
+                {/* <div className="col ps-auto from-header-detail-like fw-bold">
                   <FaHeart size={35} className="btn-like-detail ms-auto" />
                   <p className="number-like text-green">524</p>
-                </div>
+                </div> */}
               </div>
               <h6 className="text-brown">{product?.description}</h6>
             </div>

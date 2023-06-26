@@ -85,19 +85,28 @@ const Header = () => {
       <div
         className={`w-100 d-flex form-header align-items-center text-white ${resultClass}`}
       >
-        <div className="d-flex align-items-center form-tilte-header">
-          <Link className="link-none-style d-flex me-3" to="/">
-            <GiMeshBall color="#eda766" className="me-1 icon-title" size={35} />
-            <h3 className="title-header fw-bold mb-1">OnThePitch</h3>{" "}
-          </Link>
-          <h3>|</h3>
-          <strong className="ms-3 d-flex text-special">
-            Website Booking Football
-          </strong>
+        <div
+          onClick={() => navigate("/")}
+          className={`d-flex align-items-center form-tilte-header ${
+            !classBg && `item-header-home-page`
+          }`}
+        >
+          {/* <Link className="link-none-style d-flex me-3" to="/"> */}
+          <GiMeshBall color="#eda766" className="me-1 icon-title" size={35} />
+          <h3 className="title-header fw-bold mb-1">OnThePitch</h3>{" "}
+          {/* </Link> */}
+          {/* <h3>|</h3>
+          <strong className="ms-3 d-flex text-light text-special">
+            Booking Football Quy Nhon
+          </strong> */}
         </div>
         <div className="form-function-header">
           <Link className="link-none-style" to="/">
-            <div className="item-function-header">
+            <div
+              className={`item-function-header ${
+                location.pathname === `/` && `item-header-active`
+              } ${!classBg && `item-header-home-page`}`}
+            >
               <p className="d-flex gap-2  align-items-center text-special">
                 <AiFillHome size={20} />
                 Trang Chủ
@@ -106,18 +115,27 @@ const Header = () => {
           </Link>
           <div
             onClick={() => navigate("/san-bong")}
-            className="item-function-header"
+            className={`item-function-header ${
+              location.pathname === `/san-bong` && `item-header-active`
+            } ${!classBg && `item-header-home-page`}`}
           >
-            <p className="text-special">Đặt Sân</p>
+            <p className={`text-special`}>Đặt Sân</p>
           </div>
           <div
             onClick={() => navigate("/giay")}
-            className="item-function-header"
+            className={`item-function-header ${
+              location.pathname === `/giay` && `item-header-active`
+            } ${!classBg && `item-header-home-page`}`}
           >
-            <p className="text-special">Sản Phẩm Thể Thao</p>
+            <p className={`text-special`}>Sản Phẩm Thể Thao</p>
           </div>
-          <div onClick={() => navigate("/")} className="item-function-header">
-            <p className="text-special">Giới Thiệu</p>
+          <div
+            onClick={() => navigate("/")}
+            className={`item-function-header ${
+              location.pathname === `/gioi-thieu` && `item-header-active`
+            } ${!classBg && `item-header-home-page`}`}
+          >
+            <p className={`text-special`}>Giới Thiệu</p>
           </div>
         </div>
         <div className="form-user-header2">
@@ -128,7 +146,12 @@ const Header = () => {
               ref={ref1}
             >
               <div className="d-flex align-items-center">
-                <AiTwotoneShopping className="icon-cart-user" size={34.5} />
+                <AiTwotoneShopping
+                  className={`icon-cart-user ${
+                    !classBg && `icon-cart-user-home-page`
+                  }`}
+                  size={34.5}
+                />
               </div>
               <div
                 className={`${
@@ -159,7 +182,11 @@ const Header = () => {
             onClick={() => setOpenInfoUser(!openInfoUser)}
             className="drop"
           >
-            <div className="form-user-header form-cart-header align-items-center">
+            <div
+              className={`form-user-header form-cart-header align-items-center ${
+                !classBg && `form-cart-header-home-page`
+              }`}
+            >
               <BiUserCircle size={27} />
               <div className="form-user-name">
                 {info ? (

@@ -1,15 +1,13 @@
 import "./trangchu.css";
-import { AiFillFacebook, AiFillInstagram, AiFillYoutube } from "react-icons/ai";
-import img1 from "../../img/izuddin-helmi-adnan-K5ChxJaheKI-unsplash.jpg";
-import img2 from "../../img/braden-hopkins-b4sSOgZrkQ4-unsplash.jpg";
 import Trending from "../trending";
 import ListGiay from "../giay";
 import ListSanBong from "../san";
+import Banner from "../banner";
 
 const TrangChu = () => {
   return (
     <>
-      <div className="form-banner">
+      {/* <div className="form-banner">
         <div className="body-banner">
           <div className="banner-left">
             <p className="text-light">
@@ -39,30 +37,11 @@ const TrangChu = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <Banner />
       <Trending />
       <ListSanBong trangChu={true} />
       <ListGiay trangChu={true} />
-      <div className={`w-100 p-5`}>
-        <div className="w-100 p-5 bg-green">
-          <div className="text-center">
-            <h3 className="mb-2 text-brown">Đăng Ký Tài Khoản</h3>
-            <strong>Sẽ Mang Lại Trải Nghiệm Đầy Đủ Nhất Cho Bạn!</strong>
-          </div>
-          <div className="box-email d-flex mt-5 justify-content-center">
-            <div className="bg-white form-email-footer d-flex p-3">
-              <input
-                className="border-0 input-simple input-email-footer"
-                placeholder="Nhập Email..."
-                type="text"
-              />
-              <button className="btn-banner ms-auto w-50 btn-email-footer">
-                Gửi Email
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
